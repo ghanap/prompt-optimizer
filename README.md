@@ -1,15 +1,15 @@
-# ⚡ Prompt Optimizer
+# Prompt Optimizer
 
-> Evolve better prompts automatically using a genetic algorithm + LLM-as-judge scoring loop.
+> Improve prompts automatically using a genetic algorithm and an LLM-based scoring loop.
 
 ## How it works
 
 1. **You provide** a rough initial prompt, a task description, and a test input
-2. **Generation 0** — your prompt gets mutated N times to seed a population
-3. **Each individual** is run against your test input, and a separate Claude call judges the output (score 1–10)
-4. **Selection** — top scorers survive; pairs are crossed over to produce children
-5. **Mutation** — children are randomly mutated using one of 10 prompt engineering strategies
-6. **Repeat** for N generations — watch scores climb in real time
+2. **Generation 0**: your prompt is mutated N times to seed a population
+3. **Each individual** is run against your test input, and a separate Claude call judges the output (score 1-10)
+4. **Selection**: top scorers survive; pairs are crossed over to produce children
+5. **Mutation**: children are randomly mutated using one of 10 prompt engineering strategies
+6. **Repeat** for N generations and review score improvements over time
 
 ## Setup
 
@@ -39,10 +39,10 @@ streamlit run app.py
 
 ## Parameters
 
-| Setting | What it does |
+| Setting | Description |
 |---|---|
-| Population size | How many prompt variants per generation (3–8) |
-| Generations | How many evolution cycles to run (2–6) |
+| Population size | Number of prompt variants per generation (3-8) |
+| Generations | Number of evolution cycles to run (2-6) |
 
 ## Mutation strategies used
 
@@ -53,7 +53,7 @@ streamlit run app.py
 - Add output format instructions  
 - Add few-shot examples  
 - Make the tone more authoritative  
-- Add constraints (what NOT to do)  
+- Add constraints (what not to do)  
 - Rewrite using active voice  
 - Add explicit reasoning trigger  
 
@@ -64,5 +64,5 @@ Each run makes approximately `pop_size × generations × 2` Claude API calls (on
 ## Tips for a good demo
 
 - Use a task with clear quality differences (e.g. "classify sentiment", "write a product description")
-- Keep test input short (1–3 sentences) so judge scores are consistent
-- Start with a deliberately vague prompt — the evolution effect is more dramatic
+- Keep test input short (1-3 sentences) so judge scores are consistent
+- Start with a deliberately vague prompt; the evolution effect is more dramatic
